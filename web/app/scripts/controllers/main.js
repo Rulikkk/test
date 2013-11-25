@@ -8,7 +8,7 @@ angular.module('webApp')
       return staticMaps.url(order.name, order.geoLat, order.geoLong);
     };
 
-    var checkInterval = 1000, lastN = 3, lastUpdateInterval = 10000;
+    var checkInterval = 1000, lastN = 3, lastUpdateInterval = 15000, streamOnce = false;
 
     function pushOrders(data) {
       if (data.length < $scope.allOrders.length) {
@@ -22,13 +22,15 @@ angular.module('webApp')
       // Add new orders to the end of list
       [].push.apply($scope.allOrders, newOrders);
 
-      if ($scope.allOrders.length >= lastN) {
+      if ($scope.allOrders.length >= lastN && !streamOnce) {
         getStream();
       }
     }
 
     function getStream() {
       if ($scope.allOrders.length >= lastN) {
+        streamOnce = true;
+
         // remove old orders
         $scope.stream.splice(0, $scope.stream.length);
 

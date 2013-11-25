@@ -13,8 +13,7 @@ angular.module('webApp')
           size: '300x120',
           sensor: false,
           zoom: 10,
-          label: l,
-          markers: 'color:red|label:' + label + '|' + lat + ',' + lon
+          markers: 'color:red|label:' + l + '|' + lat + ',' + lon
         };
         return base + Object.keys(opts).map(function(k) {
           return encodeURIComponent(k) + '=' + encodeURIComponent(opts[k]);

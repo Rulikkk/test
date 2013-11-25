@@ -4,7 +4,8 @@ angular.module('webApp', [
   'ngCookies',
   'ngResource',
   'ngSanitize',
-  'ngRoute'
+  'ngRoute',
+  'ui.map'
 ])
   .config(function ($routeProvider) {
     $routeProvider
@@ -16,3 +17,11 @@ angular.module('webApp', [
         redirectTo: '/'
       });
   });
+
+function onGoogleReady() {
+  console.log('on google ready');
+  angular.bootstrap(document.body, ['webApp']);
+}
+
+if (onGoogleReady) {}
+

@@ -1,6 +1,12 @@
 <div class='col-sm-12'>
-    <div class="col-sm-8">Map!</div>
+    <div class="col-sm-8">
+        <h3>On map</h3>
+        <section id="map-main" ng-controller="MapCtrl">
+            <div ui-map="myMap" ui-options="mapOptions" class="active-map"></div>
+        </section>
+    </div>
     <div class="col-sm-4">
+        <h3>Latest:</h3>
         <div ng-repeat="x in stream" class="panel panel-default">
             <div class="panel-heading">{{x.name}}</div>
             <div class="panel-body">
