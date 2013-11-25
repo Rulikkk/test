@@ -1,8 +1,11 @@
 <div class='col-sm-12'>
-    <div class="col-sm-9">Map!</div>
-    <div class="col-sm-3">
-        <ul>
-            <li ng-repeat="x in awesomeThings">{{x}}</li>
-        </ul>
+    <div class="col-sm-8">Map!</div>
+    <div class="col-sm-4">
+        <div ng-repeat="x in stream" class="panel panel-default">
+            <div class="panel-heading">{{x.name}}</div>
+            <div class="panel-body">
+                <img class="img-responsive img-static-map" src="{{staticMap(x)}}"/>
+            </div>
+        </div>
     </div>
 </div>

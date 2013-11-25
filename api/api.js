@@ -1,6 +1,6 @@
 var canned = require('canned')
 ,   http = require('http')
-,   opts = { cors_enabled: true, logger: process.stdout }
+,   opts = { cors: true, logger: process.stdout }
 ,   fs = require('fs')
 ,   obj = { "foo": "bar3" }
 ,   arr = []
@@ -26,7 +26,7 @@ setInterval(function() {
     var name = food[get_food_index()], 
         geo_lat = rand_range(45, 52, 5), geo_long = rand_range(5, 30, 5),
         price = rand_range(1, 100);
-	obj = { id: i, name: name, geo_lat: geo_lat, geo_long: geo_long, price: price };
+	obj = { id: i, name: name, geoLat: geo_lat, geoLong: geo_long, price: price };
     arr.push(obj);
     fs.writeFileSync('./canned/orders/index.get.json', JSON.stringify(arr));
     i++;
