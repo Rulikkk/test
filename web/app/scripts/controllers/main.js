@@ -22,6 +22,8 @@ angular.module('webApp')
       // Add new orders to the end of list
       [].push.apply($scope.allOrders, newOrders);
 
+      $scope.$broadcast('newOrders', newOrders);
+
       if ($scope.allOrders.length >= lastN && !streamOnce) {
         getStream();
       }

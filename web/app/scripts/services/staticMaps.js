@@ -3,7 +3,7 @@
 angular.module('webApp')
   .factory('staticMaps', function () {
 
-    var base = 'http://maps.googleapis.com/maps/api/staticmap?';
+    var base = '';// 'http://maps.googleapis.com/maps/api/staticmap?';
 
     return {
       // build static map url
