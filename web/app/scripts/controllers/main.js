@@ -8,7 +8,7 @@ angular.module('webApp')
       return staticMaps.url(order.name, order.geoLat, order.geoLong);
     };
 
-    var checkInterval = 1000, lastN = 12, lastUpdateInterval = 2500, streamOnce = false;
+    var checkInterval = 1000, lastN = 12;
 
     function pushOrders(data) {
       if (data.length < $scope.allOrders.length) {
@@ -22,25 +22,13 @@ angular.module('webApp')
       // Add new orders to the end of list
       [].push.apply($scope.allOrders, newOrders);
 
-      $scope.$broadcast('newOrders', newOrders);
-
-      if ($scope.allOrders.length >= lastN && !streamOnce) {
-        getStream();
-      }
-    }
-
-    function getStream() {
-      if ($scope.allOrders.length >= lastN) {
-        streamOnce = true;
-
-        // remove old orders
-        $scope.stream.splice(0, $scope.stream.length);
-
-        // add new orders, fresh at top
-        [].push.apply($scope.stream, $scope.allOrders.slice(-lastN, $scope.allOrders.length).reverse());
+      if (newOrders.length > 0) {
+        $scope.$broadcast('newOrders', newOrders);
+        newOrders.reverse();
+        [].unshift.apply($scope.stream, newOrders);
+        $scope.stream.splice(lastN, $scope.stream.length);
       }
     }
 
     loops.url('http://localhost:3000/orders', pushOrders, checkInterval);
-    loops.go(getStream, lastUpdateInterval);
   });

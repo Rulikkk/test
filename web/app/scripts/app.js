@@ -5,6 +5,7 @@ angular.module('webApp', [
   'ngResource',
   'ngSanitize',
   'ngRoute',
+  'ngAnimate',
   'ui.map'
 ])
   .config(function ($routeProvider) {

@@ -6,9 +6,8 @@
     </div>
     <div class="col-sm-4">
         <ul class="list-group slightly-transparent">
-            <li class="list-group-item" ng-repeat="x in stream">
-                {{x.name}} <span class="pull-right">
-                <span class="glyphicon glyphicon-euro"></span>{{x.price}}</span>
+            <li class="list-group-item list-row" ng-animate="'animate'" ng-repeat="x in stream">{{x.name}}
+                <span class="pull-right"><span class="glyphicon glyphicon-euro"></span>{{x.price}}</span>
             </li>
         </ul>
     </div>
