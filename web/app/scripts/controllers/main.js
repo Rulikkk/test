@@ -8,7 +8,7 @@ angular.module('webApp')
       return staticMaps.url(order.name, order.geoLat, order.geoLong);
     };
 
-    var checkInterval = 1000, lastN = 3, lastUpdateInterval = 15000, streamOnce = false;
+    var checkInterval = 1000, lastN = 12, lastUpdateInterval = 2500, streamOnce = false;
 
     function pushOrders(data) {
       if (data.length < $scope.allOrders.length) {
