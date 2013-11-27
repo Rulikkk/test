@@ -18,9 +18,8 @@ angular.module('webApp')
 
       pie.options = {
         'displayExactValues': true,
-        legend: {
-          position: 'none'
-        }
+        'chartArea': {'width': '100%', 'height': '80%'},
+        'legend': {'position': 'bottom'}
       };
 
       pie.formatters = {};
