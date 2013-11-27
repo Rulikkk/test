@@ -6,7 +6,8 @@ angular.module('webApp', [
   'ngSanitize',
   'ngRoute',
   'ngAnimate',
-  'ui.map'
+  'ui.map',
+  'googlechart'
 ])
   .config(function ($routeProvider) {
     $routeProvider

@@ -16,7 +16,7 @@ angular.module('webApp')
       $scope.$broadcast('showOrder', order);
     };
 
-    var checkInterval = 1000, lastN = 12;
+    var checkInterval = 1000, lastN = 7;
 
     function pushOrders(data) {
       if (data.length < $scope.allOrders.length) {
@@ -27,6 +27,10 @@ angular.module('webApp')
       // find only new orders
       var newOrders = data.slice($scope.allOrders.length, data.length);
 
+      newOrders.forEach(function(order){
+        if (!order.name) { order.name = 'No name'; }
+      });
+
       // Add new orders to the end of list
       [].push.apply($scope.allOrders, newOrders);
 
@@ -34,7 +38,7 @@ angular.module('webApp')
         newOrders.reverse();
         [].unshift.apply($scope.stream, newOrders);
         $scope.stream.splice(lastN, $scope.stream.length);
-        $scope.$broadcast('newOrders');
+        $scope.$broadcast('newOrders', newOrders);
       }
     }
 

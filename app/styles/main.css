@@ -12,6 +12,10 @@ body {
     cursor: pointer;
 }
 
+.list-animated {
+    height: 288px;
+}
+
 .list-row:hover {
     background-color: #00A000;
 }
@@ -73,7 +77,7 @@ body {
 
     .active-map {
         margin: -70px -800px -70px -600px;
-        height: 110%;
+        height: 111%;
     }
 
     .navbar-transparent {

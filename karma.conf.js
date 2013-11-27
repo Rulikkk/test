@@ -20,6 +20,7 @@ module.exports = function(config) {
       'app/bower_components/angular-animate/angular-animate.js',
       'app/bower_components/angular-ui-utils/modules/event/event.js',
       'app/bower_components/angular-ui-map/src/map.js',
+      'app/bower_components/angular-google-chart/ng-google-chart.js',
       'app/scripts/*.js',
       'app/scripts/**/*.js',
       'test/mock/**/*.js',

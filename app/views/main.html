@@ -1,6 +1,6 @@
 <nav class="navbar navbar-default navbar-fixed-top navbar-transparent" role="navigation">
     <div class="navbar-header">
-        <a class="navbar-brand"><strong>Delivery hero map</strong></a>
+        <a class="navbar-brand" href=""><strong>Delivery hero map</strong></a>
     </div>
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <form class="navbar-form navbar-right slightly-transparent" role="search">
@@ -23,17 +23,22 @@
             <div ui-map="myMap" ui-options="mapOptions" class="active-map tall"></div>
             <div ui-map-info-window="myInfoWindow">
                 <strong>
-                    {{currentOrder.name}} <span class="glyphicon glyphicon-euro"></span>{{currentOrder.price}}
+                    {{currentOrder.name}} — <span class="glyphicon glyphicon-euro"></span>{{currentOrder.price}}
                 </strong>
             </div>
         </section>
     </div>
     <div class="col-sm-4">
-        <ul class="list-group slightly-transparent">
+        <ul class="list-group slightly-transparent list-animated">
             <li class="list-group-item list-row" ng-animate="'animate'" ng-repeat="x in stream" ng-click="showOrder(x)">
                 {{x.name}}
                 <span class="pull-right"><span class="glyphicon glyphicon-euro"></span>{{x.price}}</span>
             </li>
         </ul>
+        <div class="panel panel-default slightly-transparent" ng-controller="ChartCtrl">
+            <div class="panel-body">
+                <div google-chart chart="chart" style="{{chart.cssStyle}}" on-ready="chartReady()"/>
+            </div>
+        </div>
     </div>
 </div>
