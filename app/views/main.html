@@ -30,7 +30,7 @@
     </div>
     <div class="col-sm-4">
         <ul class="list-group slightly-transparent list-animated">
-            <li class="list-group-item list-row" ng-animate="'animate'" ng-repeat="x in stream" ng-click="showOrder(x)">
+            <li title="Click to see" class="list-group-item list-row" ng-animate="'animate'" ng-repeat="x in stream" ng-click="showOrder(x)">
                 {{x.name}}
                 <span class="pull-right"><span class="glyphicon glyphicon-euro"></span>{{x.price}}</span>
             </li>

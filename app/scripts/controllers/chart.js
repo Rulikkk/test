@@ -55,4 +55,8 @@ angular.module('webApp')
         });
       }
     });
+
+    $scope.$on('reset', function() {
+      $scope.chart.data.rows = [];
+    });
   });
