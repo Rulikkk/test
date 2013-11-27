@@ -1,11 +1,14 @@
 'use strict';
 
 angular.module('webApp')
-  .controller('MainCtrl', function ($scope, loops, staticMaps) {
+  .controller('MainCtrl', function ($scope, api) {
     $scope.allOrders = [];
     $scope.stream = [];
-    $scope.staticMap = function(order) {
-      return staticMaps.url(order.name, order.geoLat, order.geoLong);
+    $scope.reset = function() {
+      $scope.allOrders = [];
+      $scope.stream = [];
+      $scope.$broadcast('reset');
+      api.reset();
     };
 
     var checkInterval = 1000, lastN = 12;
@@ -30,5 +33,5 @@ angular.module('webApp')
       }
     }
 
-    loops.url('http://localhost:3000/orders', pushOrders, checkInterval);
+    api.loopOrders(pushOrders, checkInterval);
   });

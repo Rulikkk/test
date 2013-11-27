@@ -24,4 +24,11 @@ angular.module('webApp')
         }));
       });
     });
+
+    $scope.$on('reset', function() {
+      $scope.myMarkers.forEach(function(marker) {
+        marker.setMap(null);
+      });
+      $scope.myMarkers = [];
+    });
   });

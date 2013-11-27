@@ -1,3 +1,18 @@
+<nav class="navbar navbar-default navbar-fixed-top navbar-transparent" role="navigation">
+    <div class="navbar-header">
+        <a class="navbar-brand"><strong>Delivery hero map</strong></a>
+    </div>
+
+    <form class="navbar-form navbar-right slightly-transparent" role="search">
+        <div class="form-group">
+            <input type="text" class="form-control" placeholder="Search">
+        </div>
+        <button title="Reset api" class="btn btn-danger" ng-click="reset()">
+            <span class="glyphicon glyphicon-repeat"></span>
+        </button>
+    </form>
+</nav>
+
 <div class='col-sm-12 tall'>
     <div class="col-sm-8 tall">
         <section id="map-main" class="tall" ng-controller="MapCtrl">
