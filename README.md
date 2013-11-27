@@ -1,4 +1,1 @@
-test
-====
-
-Test repository
+Test====Test repository.To start an application:1. Clone2. `npm install`3. `bower install`4. Validate and test: `grunt`5. Run in dev: `grunt server`, run in prod: `grunt server:dist`
