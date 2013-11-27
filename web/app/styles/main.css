@@ -34,12 +34,13 @@ body {
 .list-row.ng-enter {
     opacity: 0;
     height: 0;
-    top: -100px;
     padding: 0 15px;
 }
 
 .list-row.ng-leave.ng-leave-active {
     opacity: 0;
+    padding: 0 15px;
+    height: 0;
 }
 
 @media (min-width: 768px) {
@@ -73,5 +74,24 @@ body {
     .navbar-transparent {
         background-color: rgba(1,1,1,0);
         border-color: rgba(1,1,1,0);
+    }
+
+    .list-row.ng-enter.ng-enter-active,
+    .list-row.ng-leave {
+        opacity: 1;
+        height: 42px;
+        top: 0;
+        padding: 10px 15px;
+    }
+
+    .list-row.ng-enter {
+        opacity: 0;
+        height: 0;
+        top: -100px;
+        padding: 0 15px;
+    }
+
+    .list-row.ng-leave.ng-leave-active {
+        opacity: 0;
     }
 }
