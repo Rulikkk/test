@@ -9,6 +9,11 @@ body {
 .list-row {
     height: 42px;
     overflow: hidden;
+    cursor: pointer;
+}
+
+.list-row:hover {
+    background-color: #00A000;
 }
 
 .list-row.ng-enter,

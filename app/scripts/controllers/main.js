@@ -4,11 +4,16 @@ angular.module('webApp')
   .controller('MainCtrl', function ($scope, api) {
     $scope.allOrders = [];
     $scope.stream = [];
+
     $scope.reset = function() {
       $scope.allOrders = [];
       $scope.stream = [];
       $scope.$broadcast('reset');
       api.reset();
+    };
+
+    $scope.showOrder = function(order) {
+      $scope.$broadcast('showOrder', order);
     };
 
     var checkInterval = 1000, lastN = 12;
@@ -26,10 +31,10 @@ angular.module('webApp')
       [].push.apply($scope.allOrders, newOrders);
 
       if (newOrders.length > 0) {
-        $scope.$broadcast('newOrders', newOrders);
         newOrders.reverse();
         [].unshift.apply($scope.stream, newOrders);
         $scope.stream.splice(lastN, $scope.stream.length);
+        $scope.$broadcast('newOrders');
       }
     }
 

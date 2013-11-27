@@ -15,14 +15,33 @@ angular.module('webApp')
       draggable: true
     };
 
-    $scope.$on('newOrders', function(event, newOrders) {
-      newOrders.forEach(function(order) {
-        $scope.myMarkers.push(new google.maps.Marker({
+    $scope.openMarkerInfo = function(marker) {
+      if (marker.order) {
+        $scope.currentOrder = marker.order;
+        $scope.myInfoWindow.open($scope.myMap, marker);
+      }
+    };
+
+    $scope.$on('newOrders', function() {
+      $scope.stream.forEach(function(order) {
+        if (order.marker) { return; }
+        var marker = new google.maps.Marker({
           map: $scope.myMap,
           position: new google.maps.LatLng(order.geoLat, order.geoLong),
           animation: google.maps.Animation.DROP
-        }));
+        });
+        order.marker = marker;
+        marker.order = order;
+        $scope.myMarkers.push(marker);
       });
+    });
+
+    $scope.$on('showOrder', function(event, order) {
+      if (order.marker) {
+        $scope.openMarkerInfo(order.marker);
+        $scope.myMap.panTo(order.marker.getPosition());
+        $scope.myMap.setZoom(7);
+      }
     });
 
     $scope.$on('reset', function() {

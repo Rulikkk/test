@@ -2,26 +2,36 @@
     <div class="navbar-header">
         <a class="navbar-brand"><strong>Delivery hero map</strong></a>
     </div>
-
-    <form class="navbar-form navbar-right slightly-transparent" role="search">
-        <div class="form-group">
-            <input type="text" class="form-control" placeholder="Search">
-        </div>
-        <button title="Reset api" class="btn btn-danger" ng-click="reset()">
-            <span class="glyphicon glyphicon-repeat"></span>
-        </button>
-    </form>
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <form class="navbar-form navbar-right slightly-transparent" role="search">
+            <div class="form-group">
+                <input type="text" class="form-control" placeholder="Search">
+            </div>
+            <button title="Reset api" class="btn btn-danger" ng-click="reset()">
+                <span class="glyphicon glyphicon-repeat"></span>
+            </button>
+        </form>
+    </div>
 </nav>
 
 <div class='col-sm-12 tall'>
     <div class="col-sm-8 tall">
         <section id="map-main" class="tall" ng-controller="MapCtrl">
+            <div ng-repeat="marker in myMarkers" ui-map-marker="myMarkers[$index]"
+                 ui-event="{'map-click': 'openMarkerInfo(marker)'}">
+            </div>
             <div ui-map="myMap" ui-options="mapOptions" class="active-map tall"></div>
+            <div ui-map-info-window="myInfoWindow">
+                <strong>
+                    {{currentOrder.name}} <span class="glyphicon glyphicon-euro"></span>{{currentOrder.price}}
+                </strong>
+            </div>
         </section>
     </div>
     <div class="col-sm-4">
         <ul class="list-group slightly-transparent">
-            <li class="list-group-item list-row" ng-animate="'animate'" ng-repeat="x in stream">{{x.name}}
+            <li class="list-group-item list-row" ng-animate="'animate'" ng-repeat="x in stream" ng-click="showOrder(x)">
+                {{x.name}}
                 <span class="pull-right"><span class="glyphicon glyphicon-euro"></span>{{x.price}}</span>
             </li>
         </ul>
